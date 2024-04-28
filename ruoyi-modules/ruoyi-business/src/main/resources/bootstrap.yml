@@ -1,0 +1,27 @@
+# Tomcat
+server:
+  port: 9209
+
+# Spring
+spring: 
+  application:
+    # 应用名称
+    name: ruoyi-business
+  profiles:
+    # 环境配置
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 127.0.0.1:8848
+        namespace: 02c36359-142c-4590-849e-300f64ab515d
+      config:
+        # 配置中心地址
+        server-addr: 127.0.0.1:8848
+        namespace: 02c36359-142c-4590-849e-300f64ab515d
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
